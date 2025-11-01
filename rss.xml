@@ -12,19 +12,12 @@
       <link>http://kinotate.com</link>
     </image>
     <language>ja</language>
-    <lastBuildDate>Sat, 01 Nov 2025 22:36:02 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 01 Nov 2025 23:12:57 +0000</lastBuildDate>
     <item>
-      <title>Python development best practices</title>
-      <link>http://chrisholdgraf.com/blog/2025/hoge2</link>
-      <description>Essential practices for writing better Python code</description>
-      <guid isPermaLink="false">http://chrisholdgraf.com/blog/2025/hoge2</guid>
-      <pubDate>Tue, 25 Feb 2025 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Ways the Jupyter Foundation could support open source projects</title>
-      <link>http://chrisholdgraf.com/blog/2025/hoge1</link>
-      <description>A discussion about how the Jupyter Foundation can better support open source projects</description>
-      <guid isPermaLink="false">http://chrisholdgraf.com/blog/2025/hoge1</guid>
+      <title>Notion から Myst へ部分的に移行する</title>
+      <link>http://chrisholdgraf.com/blog/2025/notion-to-myst</link>
+      <description>Myst の良さを布教します</description>
+      <guid isPermaLink="false">http://chrisholdgraf.com/blog/2025/notion-to-myst</guid>
       <pubDate>Wed, 26 Feb 2025 00:00:00 +0000</pubDate>
     </item>
   </channel>
