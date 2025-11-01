@@ -1,0 +1,40 @@
+# See docs at: https://mystmd.org/guide/frontmatter
+version: 1
+project:
+  plugins:
+    - type: executable
+      path: ./src/blogpost.py
+  title: Welcome
+  # description:
+  # keywords: []
+  authors: 
+    - name: kinotate
+      website: https://kinotate.com
+      id: kinotate
+      github: tomoyahiroe
+      twitter: kinotate166378
+  github: https://github.com/tomoyahiroe/myst-kinotate
+  # To autogenerate a Table of Contents, run "myst init --write-toc"
+  toc:
+    - file: index.md
+    - file: about.md
+    - file: blogs.md
+      children:
+      - title: "2025"
+        children:
+        - pattern: "blog/2025/**{.ipynb,.md}"
+
+site:
+  nav:
+    - title: About
+      url: /about
+    - title: Blogs
+      url: /blogs
+
+  template: book-theme
+  title: kinotate
+  options:
+    folders: true
+    logo_text: kinotate
+    favicon: _static/kinotate.png
+
