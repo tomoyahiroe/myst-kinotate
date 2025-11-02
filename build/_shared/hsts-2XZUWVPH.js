@@ -1,1 +1,1 @@
-import{a}from"https://kinotate.com/build/_shared/chunk-65XQQU63.js";import"https://kinotate.com/build/_shared/chunk-2NH4LW52.js";export default a();
+import{a}from"/build/_shared/chunk-65XQQU63.js";import"/build/_shared/chunk-2NH4LW52.js";export default a();
