@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0">
+  <channel>
+    <title>kintotate blog</title>
+    <link>http://kinotate.com</link>
+    <description>kinotate's personal blog about macroeconomics</description>
+    <docs>http://www.rssboard.org/rss-specification</docs>
+    <generator>python-feedgen</generator>
+    <image>
+      <url>http://kinotate.com/_static/kinotate.png</url>
+      <title>kintotate blog</title>
+      <link>http://kinotate.com</link>
+    </image>
+    <language>ja</language>
+    <lastBuildDate>Sun, 02 Nov 2025 00:10:53 +0000</lastBuildDate>
+    <item>
+      <title>Notion から Myst へ部分的に移行する</title>
+      <link>http://chrisholdgraf.com/blog/2025/notion-to-myst</link>
+      <description>Myst の良さを布教します</description>
+      <guid isPermaLink="false">http://chrisholdgraf.com/blog/2025/notion-to-myst</guid>
+      <pubDate>Sun, 02 Nov 2025 00:00:00 +0000</pubDate>
+    </item>
+  </channel>
+</rss>
