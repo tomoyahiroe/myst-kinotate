@@ -1,50 +1,59 @@
 name: deploy-website
 
-# Only run this when the master branch changes
 on:
-  pull_request:
   push:
     branches:
-    - main
+      - main
   workflow_dispatch:
 
-# This job installs dependencies, build the book, and pushes it to `gh-pages`
+permissions:
+  contents: read
+  pages: write
+
 jobs:
   deploy-book:
     runs-on: ubuntu-latest
+    env:
+      # カスタムドメイン配信なので BASE_URL は未設定 (空文字)
+      SITE_BASE_URL: ""
+      # ここに利用するカスタムドメインを記述してください
+      CUSTOM_DOMAIN: kinotate.com
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
-    # Install dependencies
-    - uses: actions/setup-python@v4
-      with:
-        python-version: '3.12' 
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
 
-    - name: Install the latest version of uv
-      uses: astral-sh/setup-uv@v3
-      with:
-        version: "latest"
+      - name: Install uv
+        uses: astral-sh/setup-uv@v4
 
-    - name: Install dependencies
-      run: |
-        uv pip install --system -r requirements.txt
+      - name: Install dependencies
+        run: |
+          uv pip install --system -r requirements.txt
 
-    # Build the book
-    - name: Build the site
-      run: |
-        myst build --html
+      - name: Build the site
+        run: |
+          if [ -n "${SITE_BASE_URL}" ]; then
+            BASE_URL="${SITE_BASE_URL}" myst build --html
+          else
+            myst build --html
+          fi
 
-    # Move RSS feeds to output folder
-    - name: Move RSS feeds
-      run: |
-        cp atom.xml _build/html/atom.xml
-        cp rss.xml _build/html/rss.xml
+      - name: Move RSS feeds
+        run: |
+          cp atom.xml _build/html/atom.xml
+          cp rss.xml _build/html/rss.xml
 
-    # If we've pushed to main, push the book's HTML to github-pages
-    - if: ${{ github.ref == 'refs/heads/main' }}
-      name: GitHub Pages action
-      uses: peaceiris/actions-gh-pages@v4
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./_build/html
-        cname: chrisholdgraf.com
+      - name: Create CNAME file
+        run: |
+          echo "${{ env.CUSTOM_DOMAIN }}" > _build/html/CNAME
+
+      - name: GitHub Pages action
+        if: ${{ github.ref == 'refs/heads/main' }}
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: ./_build/html
+          cname: ${{ env.CUSTOM_DOMAIN }}
